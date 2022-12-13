@@ -29,6 +29,8 @@ const DropFileInput = props => {
         uploadData.append('id', null);
         uploadData.append('description', description);
         uploadData.append('file', fileList);
+        uploadData.append('filename', fileList.name);
+
         console.log(uploadData);
         fetch('http://127.0.0.1:8000/fileUpload/', {
             method: 'POST',

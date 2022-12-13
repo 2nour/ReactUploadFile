@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import '../drop-file-input/drop-file-input.css';
-import { Link } from "react-router-dom";
 
 
 
@@ -32,21 +31,32 @@ const Download = () => {
                     <form className="d-flex flex-column">
 
 
-                       
+
 
                         <ul>
                             {
                                 fileList.map((item, index) => (
-                                    <Link to={`/downloadItem/${item.id}`}>
-                                        <div key={index} className="drop-file-preview__item">
 
-                                            <div className="drop-file-preview__item__info">
-                                                <p>{item.description}
+                                    <div key={index} className="drop-file-preview__item">
 
-                                                </p>
-                                            </div>
+                                        <div className="drop-file-preview__item__info">
+                                            {item.description}
+
+
+                                            <a href={item.file} download={item.filename}><button>Click to download</button></a>
+
+
+
+
                                         </div>
-                                    </Link>
+                                        <iframe
+                                            style={{ width: "40%", height: "200px" }}
+                                            src={item.file}
+                                        >
+                                            {" "}
+                                        </iframe>
+                                    </div>
+
 
                                 ))
                             }
